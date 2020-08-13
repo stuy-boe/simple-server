@@ -24,10 +24,21 @@ router.get("/favorite-number", (req, res) => {
 });
 
 
-router.post("/test-post", (req, res) => {
+router.get("/test-post", (req, res) => {
+	res.send(`
+		<form method="post" action="/send-message">
+			<input name="message">
+			<button>send</button>
+		</form>
+	`);
+});
+
+router.post("/send-message", (req, res) => {
 	const message = req.body.message;
 
 	res.send("I got your message. Was it: " + message + " ?");
 });
+
+
 
 module.exports = router;
